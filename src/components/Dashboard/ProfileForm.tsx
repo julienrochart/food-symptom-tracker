@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, User, Calendar, Ruler, Weight, Users, Trash2, AlertTriangle } from 'lucide-react';
+import { X, User, Calendar, Ruler, Weight, Users, Trash2, AlertTriangle, Settings } from 'lucide-react';
 import { saveUserProfile, getUserProfile, deleteAllUserData } from '../../lib/firebaseData';
 import { useAuth } from '../../contexts/AuthContext';
 import { UserProfile } from '../../types';
@@ -7,9 +7,10 @@ import { UserProfile } from '../../types';
 interface ProfileFormProps {
   onClose: () => void;
   onSaved: () => void;
+  onOpenRoadmap?: () => void;
 }
 
-export function ProfileForm({ onClose, onSaved }: ProfileFormProps) {
+export function ProfileForm({ onClose, onSaved, onOpenRoadmap }: ProfileFormProps) {
   const [profile, setProfile] = useState<Partial<UserProfile>>({});
   const [loading, setLoading] = useState(false);
   const [loadingProfile, setLoadingProfile] = useState(true);
@@ -223,6 +224,20 @@ export function ProfileForm({ onClose, onSaved }: ProfileFormProps) {
                   return 'Obese';
                 })()}
               </p>
+            </div>
+          )}
+
+          {/* Roadmap Button */}
+          {onOpenRoadmap && (
+            <div className="border-t border-gray-200 pt-6 mt-6">
+              <button
+                type="button"
+                onClick={onOpenRoadmap}
+                className="w-full flex items-center justify-center space-x-2 px-4 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg transition-colors"
+              >
+                <Settings className="w-5 h-5" />
+                <span className="font-medium">View Development Roadmap</span>
+              </button>
             </div>
           )}
 

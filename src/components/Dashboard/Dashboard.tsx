@@ -8,7 +8,7 @@ import { FoodEntryForm } from './FoodEntryForm';
 import { SymptomEntryForm } from './SymptomEntryForm';
 import { ProfileForm } from './ProfileForm';
 import { CustomFoodForm } from './CustomFoodForm';
-import { Utensils, Activity, Calendar, BarChart3, User, Settings, TrendingUp, ArrowLeft } from 'lucide-react';
+import { Utensils, ClipboardList, Calendar, BarChart3, User, Settings, TrendingUp, ArrowLeft } from 'lucide-react';
 import { format } from 'date-fns';
 
 export function Dashboard() {
@@ -85,7 +85,7 @@ export function Dashboard() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
+      <Header onLogoClick={() => setActiveView('daily')} />
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
@@ -177,6 +177,7 @@ export function Dashboard() {
               <ProfileForm
                 onClose={goBack}
                 onSaved={handleProfileSaved}
+                onOpenRoadmap={() => setActiveView('roadmap')}
               />
             </div>
           )}
@@ -192,66 +193,54 @@ export function Dashboard() {
       </main>
 
       {/* Bottom Navigation Menu */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-2 z-50 safe-area-bottom">
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-2 py-1 z-50 safe-area-bottom">
         <div className="max-w-md mx-auto">
-          <div className="grid grid-cols-5 gap-1">
+          <div className="grid grid-cols-4 gap-1">
             <button
               onClick={() => setActiveView('add-food')}
-              className={`flex flex-col items-center justify-center py-2 px-1 rounded-lg transition-colors ${
-                activeView === 'add-food' 
-                  ? 'text-green-600 bg-green-50' 
+              className={`flex flex-col items-center justify-center py-1.5 px-1 rounded-lg transition-colors ${
+                activeView === 'add-food'
+                  ? 'text-green-600 bg-green-50'
                   : 'text-green-600 hover:bg-green-50'
               }`}
             >
-              <Utensils className="w-6 h-6 mb-1" />
+              <Utensils className="w-5 h-5 mb-0.5" />
               <span className="text-xs font-medium">Add Food</span>
             </button>
-            
+
             <button
               onClick={() => setActiveView('add-symptom')}
-              className={`flex flex-col items-center justify-center py-2 px-1 rounded-lg transition-colors ${
-                activeView === 'add-symptom' 
-                  ? 'text-blue-600 bg-blue-50' 
+              className={`flex flex-col items-center justify-center py-1.5 px-1 rounded-lg transition-colors ${
+                activeView === 'add-symptom'
+                  ? 'text-blue-600 bg-blue-50'
                   : 'text-blue-600 hover:bg-blue-50'
               }`}
             >
-              <Activity className="w-6 h-6 mb-1" />
+              <ClipboardList className="w-5 h-5 mb-0.5" />
               <span className="text-xs font-medium">Log Symptom</span>
             </button>
-            
+
             <button
               onClick={() => setActiveView('analysis')}
-              className={`flex flex-col items-center justify-center py-2 px-1 rounded-lg transition-colors ${
-                activeView === 'analysis' 
-                  ? 'text-orange-600 bg-orange-50' 
+              className={`flex flex-col items-center justify-center py-1.5 px-1 rounded-lg transition-colors ${
+                activeView === 'analysis'
+                  ? 'text-orange-600 bg-orange-50'
                   : 'text-orange-600 hover:bg-orange-50'
               }`}
             >
-              <TrendingUp className="w-6 h-6 mb-1" />
+              <TrendingUp className="w-5 h-5 mb-0.5" />
               <span className="text-xs font-medium">Analysis</span>
             </button>
-            
-            <button
-              onClick={() => setActiveView('roadmap')}
-              className={`flex flex-col items-center justify-center py-2 px-1 rounded-lg transition-colors ${
-                activeView === 'roadmap' 
-                  ? 'text-indigo-600 bg-indigo-50' 
-                  : 'text-indigo-600 hover:bg-indigo-50'
-              }`}
-            >
-              <Settings className="w-6 h-6 mb-1" />
-              <span className="text-xs font-medium">Roadmap</span>
-            </button>
-            
+
             <button
               onClick={() => setActiveView('profile')}
-              className={`flex flex-col items-center justify-center py-2 px-1 rounded-lg transition-colors ${
-                activeView === 'profile' 
-                  ? 'text-purple-600 bg-purple-50' 
-                  : 'text-purple-600 hover:bg-purple-50'
+              className={`flex flex-col items-center justify-center py-1.5 px-1 rounded-lg transition-colors ${
+                activeView === 'profile'
+                  ? 'text-slate-600 bg-slate-50'
+                  : 'text-slate-600 hover:bg-slate-50'
               }`}
             >
-              <User className="w-6 h-6 mb-1" />
+              <User className="w-5 h-5 mb-0.5" />
               <span className="text-xs font-medium">Profile</span>
             </button>
           </div>

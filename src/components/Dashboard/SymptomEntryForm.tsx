@@ -274,7 +274,7 @@ export function SymptomEntryForm({ selectedDate, onClose, onSaved }: SymptomEntr
                 >
                   <div className="text-center">
                     <div className="text-3xl font-bold mb-2">😊</div>
-                    <div className="text-lg font-medium">Mild</div>
+                    <div className="text-lg font-medium">MILD</div>
                     <div className="text-sm opacity-75 mt-1">1-3</div>
                   </div>
                 </button>
@@ -290,7 +290,7 @@ export function SymptomEntryForm({ selectedDate, onClose, onSaved }: SymptomEntr
                 >
                   <div className="text-center">
                     <div className="text-3xl font-bold mb-2">😐</div>
-                    <div className="text-lg font-medium">Moderate</div>
+                    <div className="text-lg font-medium">MODR</div>
                     <div className="text-sm opacity-75 mt-1">4-6</div>
                   </div>
                 </button>
@@ -306,7 +306,7 @@ export function SymptomEntryForm({ selectedDate, onClose, onSaved }: SymptomEntr
                 >
                   <div className="text-center">
                     <div className="text-3xl font-bold mb-2">😣</div>
-                    <div className="text-lg font-medium">Severe</div>
+                    <div className="text-lg font-medium">SEVR</div>
                     <div className="text-sm opacity-75 mt-1">7-10</div>
                   </div>
                 </button>
